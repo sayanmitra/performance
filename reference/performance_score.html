@@ -12,7 +12,7 @@ from a model with binary or count outcome."><meta property="og:image" content="h
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,19 +72,28 @@ from a model with binary or count outcome.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">performance_score</span><span class="op">(</span><span class="va">model</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">performance_score</span><span class="op">(</span><span class="va">model</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>model</dt>
 <dd><p>Model with binary or count outcome.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Toggle off warnings.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Arguments from other functions, usually only used internally.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list with three elements, the logarithmic, quadratic/Brier and spherical score.</p>
+    
+
+<p>A list with three elements, the logarithmic, quadratic/Brier and spherical score.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -106,7 +115,7 @@ in <strong>lme4</strong>.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Carvalho, A. (2016). An overview of applications of proper scoring rules. Decision Analysis 13, 223–242. doi: <a href="https://doi.org/10.1287/deca.2016.0337" class="external-link">10.1287/deca.2016.0337</a></p>
+    <p>Carvalho, A. (2016). An overview of applications of proper scoring rules. Decision Analysis 13, 223–242. <a href="https://doi.org/10.1287/deca.2016.0337" class="external-link">doi:10.1287/deca.2016.0337</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -151,7 +160,7 @@ in <strong>lme4</strong>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
     </footer></div>

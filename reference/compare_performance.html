@@ -14,7 +14,7 @@ indices across models."><meta property="og:image" content="https://easystats.git
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,27 +75,50 @@ indices across models.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">compare_performance</span><span class="op">(</span><span class="va">...</span>, metrics <span class="op">=</span> <span class="st">"all"</span>, rank <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">compare_performance</span><span class="op">(</span>
+  <span class="va">...</span>,
+  metrics <span class="op">=</span> <span class="st">"all"</span>,
+  rank <span class="op">=</span> <span class="cn">FALSE</span>,
+  estimator <span class="op">=</span> <span class="st">"ML"</span>,
+  verbose <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
 <dd><p>Multiple model objects (also of different classes).</p></dd>
+
+
 <dt>metrics</dt>
 <dd><p>Can be <code>"all"</code>, <code>"common"</code> or a character vector of
 metrics to be computed. See related
 <code><a href="model_performance.html">documentation()</a></code> of object's class for
 details.</p></dd>
+
+
 <dt>rank</dt>
 <dd><p>Logical, if <code>TRUE</code>, models are ranked according to 'best'
 overall model performance. See 'Details'.</p></dd>
+
+
+<dt>estimator</dt>
+<dd><p>Only for linear models. Corresponds to the different
+estimators for the standard deviation of the errors. If <code>estimator = "ML"</code>
+(default), the scaling is done by n (the biased ML estimator), which is
+then equivalent to using <code>AIC(logLik())</code>. Setting it to <code>"REML"</code> will give
+the same results as <code>AIC(logLik(..., REML = TRUE))</code>.</p></dd>
+
+
 <dt>verbose</dt>
-<dd><p>Toggle off warnings.</p></dd>
+<dd><p>Toggle warnings.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data frame (with one row per model) and one column per "index" (see
+    
+
+<p>A data frame with one row per model and one column per "index" (see
 <code>metrics</code>).</p>
     </div>
     <div class="section level2">
@@ -137,6 +160,19 @@ Hence, points closer to the center indicate worse fit indices
 for more details).</p>
 </div>
 
+<div class="section">
+<h3 id="reml-versus-ml-estimator">REML versus ML estimator<a class="anchor" aria-label="anchor" href="#reml-versus-ml-estimator"></a></h3>
+<p>By default, <code>estimator = "ML"</code>, which means that values from information
+criteria (AIC, AICc, BIC) for specific model classes (like models from <em>lme4</em>)
+are based on the ML-estimator, while the default behaviour of <code><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC()</a></code> for
+such classes is setting <code>REML = TRUE</code>. This default is intentional, because
+comparing information criteria based on REML fits is usually not valid
+(it might be useful, though, if all models share the same fixed effects -
+however, this is usually not the case for nested models, which is a
+prerequisite for the LRT). Set <code>estimator = "REML"</code> explicitly return the
+same (AIC/...) values as from the defaults in <code>AIC.merMod()</code>.</p>
+</div>
+
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -146,7 +182,7 @@ for more details).</p>
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Burnham, K. P., &amp; Anderson, D. R. (2002).
 <em>Model selection and multimodel inference: A practical information-theoretic approach</em> (2nd ed.).
-Springer-Verlag. doi: <a href="https://doi.org/10.1007/b97636" class="external-link">10.1007/b97636</a></p>
+Springer-Verlag. <a href="https://doi.org/10.1007/b97636" class="external-link">doi:10.1007/b97636</a></p>
     </div>
 
     <div class="section level2">
@@ -178,15 +214,15 @@ Springer-Verlag. doi: <a href="https://doi.org/10.1007/b97636" class="external-l
 <span class="r-in">  <span class="va">m3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">Petal.Length</span> <span class="op">~</span> <span class="va">Sepal.Length</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">Species</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu">compare_performance</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>When comparing models, please note that probably not all models were fit from</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   same data.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>When comparing models, please note that probably not all models were fit</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   from same data.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Comparison of Model Performance Indices</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Name |   Model |     AIC | AIC weights |     BIC | BIC weights |  RMSE | Sigma |    R2 | R2 (adj.) | Tjur's R2 | Log_loss | Score_log | Score_spherical |   PCP | R2 (cond.) | R2 (marg.) |   ICC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m1   |      lm | 156.010 |     &lt; 0.001 | 161.873 |     &lt; 0.001 | 2.444 | 2.568 | 0.830 |     0.819 |           |          |           |                 |       |            |            |      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m2   |     glm |  31.298 |       1.000 |  35.695 |       1.000 | 0.359 | 0.934 |       |           |     0.478 |    0.395 |   -14.903 |           0.095 | 0.743 |            |            |      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m3   | lmerMod |  77.320 |     &lt; 0.001 |  89.362 |     &lt; 0.001 | 0.279 | 0.283 |       |           |           |          |           |                 |       |      0.972 |      0.096 | 0.969</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Name |   Model |     AIC | AIC weights |     BIC | BIC weights |  RMSE | Sigma |    R2 | R2 (adj.) | Tjur's R2 | Log_loss | Score_log | Score_spherical |   PCP |   AICc | AICc weights | R2 (cond.) | R2 (marg.) |   ICC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m1   |      lm | 156.010 |     &lt; 0.001 | 161.873 |     &lt; 0.001 | 2.444 | 2.568 | 0.830 |     0.819 |           |          |           |                 |       |        |              |            |            |      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m2   |     glm |  31.298 |       1.000 |  35.695 |       1.000 | 0.359 | 0.934 |       |           |     0.478 |    0.395 |   -14.903 |           0.095 | 0.743 |        |              |            |            |      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m3   | lmerMod |  74.621 |     &lt; 0.001 |  86.663 |     &lt; 0.001 | 0.279 | 0.283 |       |           |           |          |           |                 |       | 74.897 |              |      0.972 |      0.096 | 0.969</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -198,7 +234,7 @@ Springer-Verlag. doi: <a href="https://doi.org/10.1007/b97636" class="external-l
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
     </footer></div>
