@@ -12,7 +12,7 @@ with binary outcome."><meta property="og:image" content="https://easystats.githu
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.1.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ with binary outcome.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">performance_pcp</span><span class="op">(</span><span class="va">model</span>, ci <span class="op">=</span> <span class="fl">0.95</span>, method <span class="op">=</span> <span class="st">"Herron"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">performance_pcp</span><span class="op">(</span><span class="va">model</span>, ci <span class="op">=</span> <span class="fl">0.95</span>, method <span class="op">=</span> <span class="st">"Herron"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -130,16 +130,16 @@ better fit than the null-model (in such cases, p &lt; 0.05).</p>
     
 <ul><li><p>Herron, M. (1999). Postestimation Uncertainty in Limited Dependent
 Variable Models. Political Analysis, 8, 83–98.</p></li>
-<li><p>Gelman, A., &amp; Hill, J. (2007). Data analysis using regression and
+<li><p>Gelman, A., and Hill, J. (2007). Data analysis using regression and
 multilevel/hierarchical models. Cambridge; New York: Cambridge University
 Press, 99.</p></li>
 </ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">vs</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">wt</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">performance_pcp</span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">vs</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">wt</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">performance_pcp</span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Percentage of Correct Predictions from Logistic Regression Model</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Full model: 83.75% [70.96% - 96.53%]</span>
@@ -151,7 +151,7 @@ Press, 99.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   df:  2.000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   p-value:  0.000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">performance_pcp</span><span class="op">(</span><span class="va">m</span>, method <span class="op">=</span> <span class="st">"Gelman-Hill"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">performance_pcp</span><span class="op">(</span><span class="va">m</span>, method <span class="op">=</span> <span class="st">"Gelman-Hill"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;"># Percentage of Correct Predictions from Logistic Regression Model</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Full model: 87.50% [76.04% - 98.96%]</span>
@@ -174,7 +174,7 @@ Press, 99.</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>
