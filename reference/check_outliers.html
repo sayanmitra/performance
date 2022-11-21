@@ -8,7 +8,7 @@ classified as an outlier by at least one method. The decision rule used by
 default is to classify as outliers observations which composite outlier
 score is superior or equal to 0.5 (i.e., that were classified as outliers
 by at least half of the methods). See the Details section below
-for a description of the methods.'><title>Outliers detection (check for influential observations) — check_outliers • performance</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.0/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.2/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.2/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.2/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Outliers detection (check for influential observations) — check_outliers"><meta property="og:description" content='Checks for and locates influential observations (i.e.,
+for a description of the methods.'><title>Outliers detection (check for influential observations) — check_outliers • performance</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.2/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.2/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.2/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Outliers detection (check for influential observations) — check_outliers"><meta property="og:description" content='Checks for and locates influential observations (i.e.,
 "outliers") via several distance and/or clustering methods. If several
 methods are selected, the returned "Outlier" vector will be a composite
 outlier score, made of the average of the binary (0 or 1) results of each
@@ -28,7 +28,7 @@ for a description of the methods.'><meta property="og:image" content="https://ea
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.10.0.3</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.10.0.13</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,7 +150,10 @@ they are  passed down to <code><a href="https://rdrr.io/r/stats/mahalanobis.html
 
 
 <dt>method</dt>
-<dd><p>The outlier detection method(s). Can be <code>"all"`` or some of </code>"cook"<code>, </code>"pareto"<code>, </code>"zscore"<code>, </code>"zscore_robust"<code>, </code>"iqr"<code>, </code>"ci"<code>, </code>"eti"<code>, </code>"hdi"<code>, </code>"bci"<code>, </code>"mahalanobis"<code>, </code>"mahalanobis_robust"<code>, </code>"mcd"<code>, </code>"ics"<code>, </code>"optics"<code>or</code>"lof"`.</p></dd>
+<dd><p>The outlier detection method(s). Can be <code>"all"</code> or some of
+<code>"cook"</code>, <code>"pareto"</code>, <code>"zscore"</code>, <code>"zscore_robust"</code>, <code>"iqr"</code>, <code>"ci"</code>, <code>"eti"</code>,
+<code>"hdi"</code>, <code>"bci"</code>, <code>"mahalanobis"</code>, <code>"mahalanobis_robust"</code>, <code>"mcd"</code>, <code>"ics"</code>,
+<code>"optics"</code> or <code>"lof"</code>.</p></dd>
 
 
 <dt>threshold</dt>
@@ -239,15 +242,15 @@ deviance from a central value, in terms of standard deviations from the mean
 (<code>"zscore"</code>) or, as it is here the case (<code>"zscore_robust"</code>) by
 default (Iglewicz, 1993), in terms of Median Absolute Deviation (MAD) from
 the median (which are robust measures of dispersion and centrality). The
-default threshold to classify outliers is 1.959 (<code>threshold =  list("zscore" = 1.959)</code>), corresponding to the 2.5\<!-- % (\code{qnorm(0.975)}) -->
-most extreme observations (assuming the data is normally distributed).
-Importantly, the Z-score method is univariate: it is computed column by
-column. If a dataframe is passed, the Z-score is calculated for each
-variable separately, and the maximum (absolute) Z-score is kept for each
-observations. Thus, all observations that are extreme on at least one
-variable might be detected as outliers. Thus, this method is not suited for
-high dimensional data (with many columns), returning too liberal results
-(detecting many outliers).</p></li>
+default threshold to classify outliers is 1.959 (<code>threshold = list("zscore" = 1.959)</code>),
+corresponding to the 2.5\<!-- % (\code{qnorm(0.975)}) most extreme observations -->
+(assuming the data is normally distributed). Importantly, the Z-score
+method is univariate: it is computed column by column. If a dataframe is
+passed, the Z-score is calculated for each variable separately, and the
+maximum (absolute) Z-score is kept for each observations. Thus, all
+observations that are extreme on at least one variable might be detected
+as outliers. Thus, this method is not suited for high dimensional data
+(with many columns), returning too liberal results (detecting many outliers).</p></li>
 <li><p><strong>IQR</strong> <code>("iqr")</code>:
 Using the IQR (interquartile range) is a robust method developed by John
 Tukey, which often appears in box-and-whisker plots (e.g., in
@@ -389,9 +392,10 @@ association, 85(411), 633-639.</p></li>
 <span class="r-in"><span><span class="co"># For single variables ------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">outliers_list</span> <span class="op">&lt;-</span> <span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">mpg</span><span class="op">)</span> <span class="co"># Find outliers</span></span></span>
 <span class="r-in"><span><span class="va">outliers_list</span> <span class="co"># Show the row index of the outliers</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> OK: No outliers detected.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - Based on the following method and threshold: zscore_robust (3.09).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - For variable: data$mpg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following method and threshold: zscore_robust (3.09).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variable: data$mpg</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">outliers_list</span><span class="op">)</span> <span class="co"># The object is a binary vector...</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span>
@@ -401,9 +405,9 @@ association, 85(411), 633-639.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Find all observations beyond +/- 2 SD</span></span></span>
 <span class="r-in"><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">mpg</span>, method <span class="op">=</span> <span class="st">"zscore"</span>, threshold <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 outliers detected: cases 18, 20.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - Based on the following method and threshold: zscore (2).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - For variable: data$mpg.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">2 outliers detected: cases 18, 20.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- Based on the following method and threshold: zscore (2).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- For variable: data$mpg.</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Outliers per variable (zscore): </span>
@@ -416,9 +420,10 @@ association, 85(411), 633-639.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># For dataframes ------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu">check_outliers</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="co"># It works the same way on dataframes</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> OK: No outliers detected.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - Based on the following method and threshold: mahalanobis (31.26).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following method and threshold: mahalanobis (31.26).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># You can also use multiple methods at once</span></span></span>
@@ -428,11 +433,11 @@ association, 85(411), 633-639.</p></li>
 <span class="r-in"><span>  <span class="st">"zscore"</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">outliers_list</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 outlier detected: case 31.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - Based on the following methods and thresholds: mahalanobis (3.09), iqr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   (1.7), zscore (31.26).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Note: Outliers were classified as such by at least half of the selected methods. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">1 outlier detected: case 31.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- Based on the following methods and thresholds: mahalanobis (3.09), iqr</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">  (1.7), zscore (31.26).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">- For variables: mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">Note: Outliers were classified as such by</span> <span style="color: #BBBB00;">at least half of the selected methods. </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The following observations were considered outliers for two or more variables </span>
@@ -483,9 +488,10 @@ association, 85(411), 633-639.</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     filter, lag</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> OK: No outliers detected.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - Based on the following method and threshold: mahalanobis (18.47).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - For variables: Sepal.Length, Sepal.Width, Petal.Length, Petal.Width</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">OK: No outliers detected.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- Based on the following method and threshold: mahalanobis (18.47).</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">- For variables: Sepal.Length, Sepal.Width, Petal.Length, Petal.Width</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co"># You can also run all the methods</span></span></span>

@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.0/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.2/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.2/font.css" rel="stylesheet">
 <link href="../deps/JetBrains_Mono-0.4.2/font.css" rel="stylesheet">
 <link href="../deps/Roboto_Slab-0.4.2/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -39,7 +39,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">performance</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.10.0.3</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.10.0.13</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,6 +156,7 @@ term for indices of fit).</p>
 <caption>Indices of model performance</caption>
 <thead><tr class="header">
 <th align="left">AIC</th>
+<th align="center">AICc</th>
 <th align="center">BIC</th>
 <th align="center">R2</th>
 <th align="center">R2 (adj.)</th>
@@ -164,6 +165,7 @@ term for indices of fit).</p>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="left">160.04</td>
+<td align="center">160.20</td>
 <td align="center">169.07</td>
 <td align="center">0.76</td>
 <td align="center">0.76</td>
@@ -180,19 +182,21 @@ function.</p>
 <table class="table">
 <caption>Comparison of Model Performance Indices</caption>
 <colgroup>
-<col width="9%">
-<col width="9%">
-<col width="20%">
-<col width="20%">
-<col width="8%">
-<col width="14%">
-<col width="8%">
-<col width="9%">
+<col width="7%">
+<col width="7%">
+<col width="16%">
+<col width="17%">
+<col width="16%">
+<col width="6%">
+<col width="12%">
+<col width="6%">
+<col width="7%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Name</th>
 <th align="center">Model</th>
 <th align="center">AIC (weights)</th>
+<th align="center">AICc (weights)</th>
 <th align="center">BIC (weights)</th>
 <th align="center">R2</th>
 <th align="center">R2 (adj.)</th>
@@ -204,6 +208,7 @@ function.</p>
 <td align="left">model1</td>
 <td align="center">lm</td>
 <td align="center">160.0 (&gt;.999)</td>
+<td align="center">160.2 (&gt;.999)</td>
 <td align="center">169.1 (&gt;.999)</td>
 <td align="center">0.76</td>
 <td align="center">0.76</td>
@@ -214,6 +219,7 @@ function.</p>
 <td align="left">model2</td>
 <td align="center">lm</td>
 <td align="center">208.2 (&lt;.001)</td>
+<td align="center">208.4 (&lt;.001)</td>
 <td align="center">217.3 (&lt;.001)</td>
 <td align="center">0.67</td>
 <td align="center">0.67</td>
@@ -224,6 +230,7 @@ function.</p>
 <td align="left">model3</td>
 <td align="center">lm</td>
 <td align="center">372.0 (&lt;.001)</td>
+<td align="center">372.2 (&lt;.001)</td>
 <td align="center">381.0 (&lt;.001)</td>
 <td align="center">0.01</td>
 <td align="center">7.16e-03</td>
